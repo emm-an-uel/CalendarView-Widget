@@ -287,7 +287,7 @@ public class MultipleTriangleView extends View {
             float startY = getPaddingTop();
 
             for (TriangleAttr t : mTriangleAttr) {
-                canvas.drawPath(getBackgroundPath(t, startX, startY, width, iheight), t.mBackgroundPaint);
+                canvas.drawPath(getBackgroundPath(t, startX, startY, width, 10), t.mBackgroundPaint);
                 canvas.drawPath(getTrianglePath(t, startX, startY, width, iheight), t.mPaint);
 
                 startY = startY + iheight + mSeparatorWidth;
