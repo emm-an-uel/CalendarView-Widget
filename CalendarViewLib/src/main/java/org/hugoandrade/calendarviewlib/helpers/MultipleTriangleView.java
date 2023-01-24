@@ -276,12 +276,6 @@ public class MultipleTriangleView extends View {
 
         float separatorWidthTotal = (mTriangleAttr.size() - 1) * mSeparatorWidth;
 
-        float[] corners = new float[]{
-                100, 100,        // Top left radius in px
-                100, 100,        // Top right radius in px
-                100, 100,          // Bottom right radius in px
-                100, 100           // Bottom left radius in px
-        };
 
         if (mViewDirection == ViewDirection.VERTICAL) {
             if (separatorWidthTotal > width)
@@ -308,12 +302,8 @@ public class MultipleTriangleView extends View {
             float startX = getPaddingStart();
             float startY = getPaddingTop();
 
-            RectF rect = new RectF(0, 0, iwidth, height);
-
             for (TriangleAttr t : mTriangleAttr) {
-                final Path path = getBackgroundPath(t, startX, startY, iwidth, height);
-                path.addRoundRect(rect, corners, Path.Direction.CW);
-                canvas.drawPath(path, t.mBackgroundPaint);
+                canvas.drawPath(getBackgroundPath(t, startX, startY, iwidth, height), t.mBackgroundPaint);
                 canvas.drawPath(getTrianglePath(t, startX, startY, iwidth, height), t.mPaint);
 
                 startX = startX + iwidth + mSeparatorWidth;
