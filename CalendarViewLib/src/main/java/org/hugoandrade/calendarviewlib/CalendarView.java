@@ -887,12 +887,14 @@ public class CalendarView extends FrameLayout {
 
     public static class CalendarObject {
 
+        private String mEvent;
         private String mID;
         private Calendar mDatetime;
         private int mPrimaryColor;
         private int mSecondaryColor;
 
-        public CalendarObject(String id, Calendar datetime, int primaryColor, int secondaryColor) {
+        public CalendarObject(String event, String id, Calendar datetime, int primaryColor, int secondaryColor) {
+            mEvent = event;
             mID = id;
             mDatetime = datetime;
             mPrimaryColor = primaryColor;
