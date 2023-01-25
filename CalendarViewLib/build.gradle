@@ -5,14 +5,12 @@ plugins {
 
 android {
 
-    compileSdkVersion 26
+    compileSdkVersion 33
 
     defaultConfig {
 
         minSdkVersion 18
-        targetSdkVersion 26
-        versionCode 1
-        versionName "1.0"
+        targetSdkVersion 33
     }
 
     buildTypes {
@@ -21,6 +19,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+            withJavadocJar()
+        }
+    }
+    namespace 'org.hugoandrade.calendarviewlib'
 
 }
 
@@ -34,9 +40,9 @@ dependencies {
 publishing {
     publications {
         release(MavenPublication) {
-            groupId = "com.github.emm-an-uel"
-            artifactId = "CalendarView-Widget"
-            version = "1.0.1"
+            groupId = 'com.github.emm-an-uel'
+            artifactId = 'CalendarView-Widget'
+            version = '1.0.1'
 
             afterEvaluate {
                 from components.release
