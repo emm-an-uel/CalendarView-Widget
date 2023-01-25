@@ -33,13 +33,13 @@ dependencies {
 
 publishing {
     publications {
-        mavenJava(MavenPublication) {
+        release(MavenPublication) {
             groupId = "com.github.emm-an-uel"
             artifactId = "CalendarView-Widget"
             version = "1.0.1"
 
             afterEvaluate {
-                from(components["release"])
+                from components.release
             }
         }
     }
