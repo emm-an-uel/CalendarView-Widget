@@ -8,7 +8,6 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Point;
 import android.graphics.RectF;
-import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -20,8 +19,6 @@ import java.util.List;
 public class MultipleTriangleView extends View {
 
     private class TriangleAttr {
-
-        private String mEvent;
 
         private Paint mPaint;
         private Paint mBackgroundPaint;
@@ -58,7 +55,6 @@ public class MultipleTriangleView extends View {
     }
 
     private void init(AttributeSet attrs) {
-        String mEvent;
         Direction mDirection;
         int mColor;
         int mBackgroundColor;
@@ -110,8 +106,6 @@ public class MultipleTriangleView extends View {
         mTriangleAttr = new ArrayList<>();
         for (int i = 0 ; i < mNumberOfItems ; i++) {
             TriangleAttr t = new TriangleAttr();
-
-            t.mEvent = mEvent;
 
             t.mDirection = mDirection;
             t.mBackgroundColor = mBackgroundColor;
@@ -287,20 +281,13 @@ public class MultipleTriangleView extends View {
             if (separatorWidthTotal > width)
                 return;
 
-            float iheight = (height - separatorWidthTotal) / mTriangleAttr.size();
-            float iwidth = 10;
+            float iheight = 10;
 
             float startX = getPaddingStart();
             float startY = getPaddingTop();
 
-            float textStartX = startX + 15;
-            Paint textPaint = new Paint();
-            textPaint.setColor(Color.BLACK);
-            textPaint.setTextSize(15);
-
             for (TriangleAttr t : mTriangleAttr) {
-                canvas.drawText(t.mEvent, textStartX, iheight, textPaint);
-                canvas.drawPath(getBackgroundPath(t, startX, startY, iwidth, iheight), t.mBackgroundPaint);
+                canvas.drawPath(getBackgroundPath(t, startX, startY, width, iheight), t.mBackgroundPaint);
                 canvas.drawPath(getTrianglePath(t, startX, startY, width, iheight), t.mPaint);
 
                 startY = startY + iheight + mSeparatorWidth;

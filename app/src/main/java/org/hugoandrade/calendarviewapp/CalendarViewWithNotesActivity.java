@@ -102,7 +102,7 @@ public class CalendarViewWithNotesActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 hideUnitSelector();
-                addEventToCalendarView("Event", mOptionsAdapter.getSelectedColor());
+                addEventToCalendarView(mOptionsAdapter.getSelectedColor());
             }
         });
 
@@ -128,15 +128,14 @@ public class CalendarViewWithNotesActivity extends AppCompatActivity {
             @Override
             public void onClick(int color) {
                 hideUnitSelector();
-                addEventToCalendarView("Event", color);
+                addEventToCalendarView(color);
             }
         });
         rvColors.setAdapter(mOptionsAdapter);
     }
 
-    private void addEventToCalendarView(String event, int color) {
+    private void addEventToCalendarView(int color) {
         mCalendarView.addCalendarObject(new CalendarView.CalendarObject(
-                event,
                 null,
                 mCalendarView.getSelectedDate(),
                 color,

@@ -218,7 +218,6 @@ public class CalendarViewWithNotesActivitySDK21 extends AppCompatActivity {
 
     private static CalendarView.CalendarObject parseCalendarObject(Event event) {
         return new CalendarView.CalendarObject(
-                "Event",
                 event.getID(),
                 event.getDate(),
                 event.getColor(),
