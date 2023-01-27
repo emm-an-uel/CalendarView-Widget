@@ -281,7 +281,7 @@ public class MultipleTriangleView extends View {
             if (separatorWidthTotal > width)
                 return;
 
-            float iheight = 10;
+            float iheight = 15;
 
             float startX = getPaddingStart();
             float startY = getPaddingTop();
