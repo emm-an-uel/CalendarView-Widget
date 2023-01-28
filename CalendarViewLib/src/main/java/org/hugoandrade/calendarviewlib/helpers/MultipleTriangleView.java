@@ -286,7 +286,7 @@ public class MultipleTriangleView extends View {
             float startX = getPaddingStart();
             float startY = getPaddingTop();
 
-            float markerWidth = width/4;
+            float markerWidth = width/6;
             float markerStartX = (startX + width) - markerWidth;
 
             for (TriangleAttr t : mTriangleAttr) {
