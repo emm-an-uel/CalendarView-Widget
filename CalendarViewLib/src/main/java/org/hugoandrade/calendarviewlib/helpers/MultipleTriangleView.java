@@ -25,6 +25,7 @@ public class MultipleTriangleView extends View {
 
         private Path mTrianglePath;
         private Path mBackgroundPath;
+        private Path mHalfWidthPath;
 
         private Direction mDirection;
 
@@ -286,9 +287,11 @@ public class MultipleTriangleView extends View {
             float startX = getPaddingStart();
             float startY = getPaddingTop();
 
+            float halfWidth = width/3;
+
             for (TriangleAttr t : mTriangleAttr) {
-                canvas.drawPath(getBackgroundPath(t, startX, startY, width, iheight), t.mBackgroundPaint);
-                canvas.drawPath(getTrianglePath(t, startX, startY, width, iheight), t.mPaint);
+                canvas.drawPath(getBackgroundPath(t, startX, startY, width, iheight), t.mBackgroundPaint); // if event not completed
+                canvas.drawPath(getHalfWidthPath(t, startX, startY, halfWidth, iheight), t.mPaint); // if event completed - half width
 
                 startY = startY + iheight + mSeparatorWidth;
             }
@@ -375,6 +378,27 @@ public class MultipleTriangleView extends View {
             t.mBackgroundPath.lineTo(p4.x, p4.y);
         }
         return t.mBackgroundPath;
+    }
+
+    private Path getHalfWidthPath(TriangleAttr t,
+                                   float initX,
+                                   float initY,
+                                   float width,
+                                   float height) {
+        if (t.mHalfWidthPath == null) {
+            t.mHalfWidthPath = new Path();
+            Point p1, p2, p3, p4;
+            p1 = new Point((int) initX, (int) initY);
+            p2 = new Point((int) initX, (int) (initY + height));
+            p3 = new Point((int) (initX + width), (int) (initY + height));
+            p4 = new Point((int) (initX + width), (int) initY);
+
+            t.mHalfWidthPath.moveTo(p1.x, p1.y);
+            t.mHalfWidthPath.lineTo(p2.x, p2.y);
+            t.mHalfWidthPath.lineTo(p3.x, p3.y);
+            t.mHalfWidthPath.lineTo(p4.x, p4.y);
+        }
+        return t.mHalfWidthPath;
     }
 
     //
