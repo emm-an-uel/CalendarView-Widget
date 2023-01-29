@@ -28,7 +28,7 @@
         android:padding="2dp"
         app:mtr_direction="top_left"
         app:mtr_separator_width="2dp"
-        app:mtr_number_of_items="4"
+        app:mtr_number_of_items="8"
         app:mtr_view_direction="vertical"
         />
 
